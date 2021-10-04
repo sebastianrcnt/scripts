@@ -28,5 +28,5 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Dependencies
         run: ./install-deps.sh
-      - name: Install Linux
-        run: ./build-linux.sh ./linux
+      - name: Echo Submodule Hash Id
+        run: git rev-parse HEAD
