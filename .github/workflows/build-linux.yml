@@ -32,4 +32,8 @@ jobs:
 #         run: ./install-deps.sh
       - name: Download Linux ZIP
         run: |
-          ./install-deps.sh; wget https://github.com/sebastianrcnt/linux/archive/refs/tags/csi2115-hw2.tar.gz; tar -xf csi2115-hw2.tar.gz; ./build-linux.sh ./linux-csi2115-hw2
+          ./install-deps.sh;
+          SUBMODULE_HEAD_HASH=$(git rev-parse HEAD:linux);
+          wget https://github.com/sebastianrcnt/linux/archive/$SUBMODULE_HEAD_HASH.zip;
+          unzip -q $SUBMODULE_HEAD_HASH.zip;
+          # ./build-linux.sh ./linux-csi2115-hw2;
