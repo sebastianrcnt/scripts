@@ -30,6 +30,6 @@ jobs:
 #         run: ./install-deps.sh
       - name: Download Linux ZIP
         run: |
-          wget -O linux.zip https://github.com/sebastianrcnt/linux/archive/refs/tags/csi2115-hw2.tar.gz \
-            unzip linux.zip \
-            ./build-linux.sh ./linux
+          wget https://github.com/sebastianrcnt/linux/archive/refs/tags/csi2115-hw2.tar.gz \
+            tar -xf csi2115-hw2.tar.gz \
+            ./build-linux.sh ./csi2115-hw2.tar.gz
