@@ -32,8 +32,4 @@ jobs:
 #         run: ./install-deps.sh
       - name: Download Linux ZIP
         run: |
-          ./install-deps.sh;
-          SUBMODULE_HEAD_HASH=$(git rev-parse HEAD:linux);
-          wget https://github.com/sebastianrcnt/linux/archive/$SUBMODULE_HEAD_HASH.zip;
-          unzip -q $SUBMODULE_HEAD_HASH.zip;
-          ./build-linux.sh ./linux-csi2115-hw2 tinyconfig;
+          ./install-deps.sh; SUBMODULE_HEAD_HASH=$(git rev-parse HEAD:linux); wget https://github.com/sebastianrcnt/linux/archive/$SUBMODULE_HEAD_HASH.zip; unzip -q $SUBMODULE_HEAD_HASH.zip; ./build-linux.sh ./linux-csi2115-hw2 tinyconfig;
