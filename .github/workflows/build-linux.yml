@@ -1,20 +1,13 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build Linux
+name: Check submodule changes and build Linux
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main, master, csi2115-f21 ]
     paths:
-      - 'linux/**'
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  repository_dispatch:
-    types:
-      - webhook
+      - 'linux'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,10 +22,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-
-      # Runs a single command using the runners shell
-#       - name: Install Dependencies
-#         run: ./install-deps.sh
-      - name: Download Linux ZIP
+          
+      - name: Build Linux
         run: |
           ./install-deps.sh; SUBMODULE_HEAD_HASH=$(git rev-parse HEAD:linux); wget https://github.com/sebastianrcnt/linux/archive/$SUBMODULE_HEAD_HASH.zip; unzip -q $SUBMODULE_HEAD_HASH.zip; ./build-linux.sh ./linux-$SUBMODULE_HEAD_HASH tinyconfig;
